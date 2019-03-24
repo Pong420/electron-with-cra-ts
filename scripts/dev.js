@@ -4,8 +4,6 @@ const net = require('net');
 const client = new net.Socket();
 const port = process.env.PORT || 3000;
 
-exec('npm run electron:compile');
-
 let startedElectron = false;
 const tryConnection = () =>
   client.connect({ port: port }, () => {
@@ -17,7 +15,7 @@ const tryConnection = () =>
     }
   });
 
-tryConnection();
+exec('npm run electron:compile', tryConnection);
 
 client.on('error', error => {
   setTimeout(tryConnection, 1000);

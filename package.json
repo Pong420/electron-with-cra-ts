@@ -5,12 +5,14 @@
     "dev": "yarn app:dev & node scripts/dev",
     "build": "react-scripts build & yarn electron:compile",
     "package": "rimraf release && yarn build && electron-builder build --publish never",
+    "package-all": "rimraf release && yarn build && electron-builder build -mwl",
     "tslint": "tslint 'electron/**/*.ts?(x)' && tslint 'src/**/*.ts?(x)'",
-    "app:dev": "cross-env BROWSER=false react-scripts start",
+    "app:dev": "cross-env BROWSER=false ELECTRON=true react-scripts start",
     "app:build": "react-scripts build",
-    "electron:compile": "tsc electron/main.ts",
+    "electron:compile": "rimraf electron/*js && tsc electron/main.ts",
     "electron:dev": "cross-env NODE_ENV=development electron electron/main.js",
     "component": "node scripts/component.js",
+    "precommit": "lint-staged",
     "get": "node scripts/type.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -139,7 +141,7 @@
     "tslint-react": "^3.6.0"
   },
   "dependencies": {
-    "pong-react-scripts": "2.1.8",
+    "pong-react-scripts": "2.1.8-1",
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
     "react-router-dom": "^5.0.0",

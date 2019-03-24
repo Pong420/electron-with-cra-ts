@@ -1,23 +1,41 @@
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, WebPreferences } from 'electron';
 import * as path from 'path';
 import { MenuBuilder } from './menu';
 
 let mainWindow: BrowserWindow | null = null;
 const PORT = process.env.PORT || 3000;
 
+const webPreferences: WebPreferences =
+  process.env.NODE_ENV === 'development'
+    ? {
+        // if you have CROS issue, you may uncomment below config
+        // webSecurity: false
+      }
+    : {
+        // https://electronjs.org/docs/tutorial/security#2-disable-nodejs-integration-for-remote-content
+        nodeIntegration: false,
+        nodeIntegrationInWorker: false
+      };
+
 function createWindow() {
   mainWindow = new BrowserWindow({
+    show: false,
     height: 600,
-    width: 800
+    width: 800,
+    webPreferences
   });
 
   if (process.env.NODE_ENV === 'development') {
     mainWindow.loadURL(`http://localhost:${PORT}/index.html`);
+
+    mainWindow.webContents.openDevTools();
   } else {
     mainWindow.loadFile(path.join(__dirname, '../build/index.html'));
   }
 
-  mainWindow.webContents.openDevTools();
+  mainWindow.webContents.on('did-finish-load', () => {
+    mainWindow.show();
+  });
 
   mainWindow.on('closed', () => {
     mainWindow = null;
@@ -26,13 +44,8 @@ function createWindow() {
   const menuBuilder = new MenuBuilder(mainWindow);
   menuBuilder.buildMenu();
 }
-
-// This method will be called when Electron has finished
-// initialization and is ready to create browser windows.
-// Some APIs can only be used after this event occurs.
 app.on('ready', createWindow);
 
-// Quit when all windows are closed.
 app.on('window-all-closed', () => {
   // On OS X it is common for applications and their menu bar
   // to stay active until the user quits explicitly with Cmd + Q
@@ -42,12 +55,7 @@ app.on('window-all-closed', () => {
 });
 
 app.on('activate', () => {
-  // On OS X it"s common to re-create a window in the app when the
-  // dock icon is clicked and there are no other windows open.
   if (mainWindow === null) {
     createWindow();
   }
 });
-
-// In this file you can include the rest of your app"s specific main process
-// code. You can also put them in separate files and require them here.
