@@ -141,6 +141,7 @@
     "tslint-react": "^3.6.0"
   },
   "dependencies": {
+    "electron-devtools-installer": "^2.2.4",
     "pong-react-scripts": "2.1.8-1",
     "react": "^16.8.5",
     "react-dom": "^16.8.5",

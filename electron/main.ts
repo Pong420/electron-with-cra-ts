@@ -1,23 +1,30 @@
-import { app, BrowserWindow, WebPreferences } from 'electron';
 import * as path from 'path';
 import * as url from 'url';
+import { app, BrowserWindow, WebPreferences } from 'electron';
+import installExtension, { REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS } from 'electron-devtools-installer';
 import { MenuBuilder } from './menu';
 
 let mainWindow: BrowserWindow | null = null;
 
-const webPreferences: WebPreferences =
-  process.env.NODE_ENV === 'development'
-    ? {
-        // if you have CROS issue, you may uncomment below config
-        // webSecurity: false
-      }
-    : {
-        // https://electronjs.org/docs/tutorial/security#2-disable-nodejs-integration-for-remote-content
-        nodeIntegration: false,
-        nodeIntegrationInWorker: false
-      };
+const isDevelopment = process.env.NODE_ENV === 'development';
+const webPreferences: WebPreferences = isDevelopment
+  ? {
+      // if you have CROS issue, you could uncomment below config
+      // webSecurity: false
+    }
+  : {
+      // Disable Node.js Integration for Remote Content
+      // https://electronjs.org/docs/tutorial/security#2-disable-nodejs-integration-for-remote-content
+      nodeIntegration: false,
+      nodeIntegrationInWorker: false
+    };
 
-function createWindow() {
+async function createWindow() {
+  if (isDevelopment) {
+    await installExtension(REACT_DEVELOPER_TOOLS);
+    await installExtension(REDUX_DEVTOOLS);
+  }
+
   mainWindow = new BrowserWindow({
     show: false,
     height: 600,
