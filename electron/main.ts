@@ -1,9 +1,9 @@
 import { app, BrowserWindow, WebPreferences } from 'electron';
 import * as path from 'path';
+import * as url from 'url';
 import { MenuBuilder } from './menu';
 
 let mainWindow: BrowserWindow | null = null;
-const PORT = process.env.PORT || 3000;
 
 const webPreferences: WebPreferences =
   process.env.NODE_ENV === 'development'
@@ -25,13 +25,15 @@ function createWindow() {
     webPreferences
   });
 
-  if (process.env.NODE_ENV === 'development') {
-    mainWindow.loadURL(`http://localhost:${PORT}/index.html`);
+  const startUrl =
+    process.env.ELECTRON_START_URL ||
+    url.format({
+      pathname: path.join(__dirname, '../build/index.html'),
+      protocol: 'file:',
+      slashes: true
+    });
 
-    mainWindow.webContents.openDevTools();
-  } else {
-    mainWindow.loadFile(path.join(__dirname, '../build/index.html'));
-  }
+  mainWindow.loadURL(startUrl);
 
   mainWindow.webContents.on('did-finish-load', () => {
     mainWindow.show();

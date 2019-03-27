@@ -2,7 +2,7 @@
   "name": "electron-react-ts",
   "version": "1.0.0",
   "scripts": {
-    "dev": "node scripts/dev & yarn app:dev",
+    "dev": "nf start",
     "build": "yarn app:build && yarn electron:compile",
     "package": "rimraf release && yarn build && electron-builder build --publish never",
     "package-all": "rimraf release && yarn build && electron-builder build -mwl",
@@ -20,7 +20,6 @@
   "homepage": ".",
   "main": "./electron/main.js",
   "build": {
-    "asar": false,
     "productName": "React App",
     "appId": "React App",
     "directories": {
@@ -133,6 +132,7 @@
     "cross-env": "^5.2.0",
     "electron": "^4.1.1",
     "electron-builder": "^20.39.0",
+    "foreman": "^3.0.1",
     "lint-staged": "^8.1.5",
     "node-sass": "^4.11.0",
     "rimraf": "^2.6.3",

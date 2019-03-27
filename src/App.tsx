@@ -1,11 +1,11 @@
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import React from 'react';
-import { Home } from './page/Home';
+import { HomePage } from './page/HomePage';
 
 const App = () => (
   <Router>
     <Switch>
-      <Route exact path="/" component={Home} />
+      <Route exact path="/" component={HomePage} />
     </Switch>
   </Router>
 );

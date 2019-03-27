@@ -1,4 +1,5 @@
 {
   "extends": "../tsconfig.json",
-  "target": "commonjs"
+  "target": "commonjs",
+  "exclude": ["../node_modules"]
 }
