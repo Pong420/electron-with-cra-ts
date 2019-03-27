@@ -2,8 +2,8 @@
   "name": "electron-react-ts",
   "version": "1.0.0",
   "scripts": {
-    "dev": "yarn app:dev & node scripts/dev",
-    "build": "react-scripts build & yarn electron:compile",
+    "dev": "node scripts/dev & yarn app:dev",
+    "build": "yarn app:build && yarn electron:compile",
     "package": "rimraf release && yarn build && electron-builder build --publish never",
     "package-all": "rimraf release && yarn build && electron-builder build -mwl",
     "tslint": "tslint 'electron/**/*.ts?(x)' && tslint 'src/**/*.ts?(x)'",
