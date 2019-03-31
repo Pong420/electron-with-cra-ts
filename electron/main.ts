@@ -2,7 +2,6 @@ import * as path from 'path';
 import * as url from 'url';
 import { app, BrowserWindow, WebPreferences } from 'electron';
 import { MenuBuilder } from './menu';
-import installExtension, { REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS } from 'electron-devtools-installer';
 
 let mainWindow: BrowserWindow | null = null;
 
@@ -15,12 +14,17 @@ const webPreferences: WebPreferences = isDevelopment
   : {
       // Disable Node.js Integration for Remote Content
       // https://electronjs.org/docs/tutorial/security#2-disable-nodejs-integration-for-remote-content
-      nodeIntegration: false,
-      nodeIntegrationInWorker: false
+      // nodeIntegration: false,
+      // nodeIntegrationInWorker: false
     };
 
 async function createWindow() {
   if (isDevelopment) {
+    const {
+      default: installExtension,
+      REACT_DEVELOPER_TOOLS,
+      REDUX_DEVTOOLS
+    } = await import('electron-devtools-installer');
     await installExtension(REACT_DEVELOPER_TOOLS);
     await installExtension(REDUX_DEVTOOLS);
   }
