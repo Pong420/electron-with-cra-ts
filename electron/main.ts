@@ -1,8 +1,8 @@
 import * as path from 'path';
 import * as url from 'url';
 import { app, BrowserWindow, WebPreferences } from 'electron';
-import installExtension, { REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS } from 'electron-devtools-installer';
 import { MenuBuilder } from './menu';
+import installExtension, { REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS } from 'electron-devtools-installer';
 
 let mainWindow: BrowserWindow | null = null;
 
@@ -43,7 +43,7 @@ async function createWindow() {
   mainWindow.loadURL(startUrl);
 
   mainWindow.webContents.on('did-finish-load', () => {
-    mainWindow.show();
+    mainWindow && mainWindow.show();
   });
 
   mainWindow.on('closed', () => {
