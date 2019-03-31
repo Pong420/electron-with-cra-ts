@@ -18,7 +18,18 @@
     "jsx-no-lambda": false,
     "curly": [true, "ignore-same-line"],
     "no-unused-expression": [true, "allow-fast-null-checks"],
-    "no-implicit-dependencies": [true, "dev"]
+    "no-implicit-dependencies": [true, "dev"],
+    "variable-name": [
+      true,
+      "check-format",
+      "allow-leading-underscore",
+      "allow-trailing-underscore",
+      "allow-pascal-case",
+      "allow-snake-case"
+    ],
+    "no-string-literal": false,
+    "member-ordering": false,
+    "jsx-wrap-multiline": false
   },
   "rulesDirectory": []
 }

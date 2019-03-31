@@ -82,8 +82,7 @@
         "rpm",
         "snap"
       ],
-      "icon": "public/icon",
-      "category": "Graphics"
+      "icon": "public/icon"
     },
     "snap": {
       "grade": "stable"
@@ -103,7 +102,10 @@
     "url": "https://REPLACE_BUG_REPORT_URL"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "react-app",
+    "plugins": [
+      "react-hooks"
+    ]
   },
   "lint-staged": {
     "*.{ts,tsx}": [
@@ -132,7 +134,9 @@
     "cross-env": "^5.2.0",
     "electron": "^4.1.3",
     "electron-builder": "^20.39.0",
+    "eslint-plugin-react-hooks": "^1.6.0",
     "foreman": "^3.0.1",
+    "husky": "^1.3.1",
     "lint-staged": "^8.1.5",
     "node-sass": "^4.11.0",
     "rimraf": "^2.6.3",
