@@ -11,6 +11,6 @@ ReactDOM.render(<App />, document.getElementById('root'));
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
 
-if ((module as any).hot) {
-  (module as any).hot.accept();
+if (module.hot) {
+  module.hot.accept();
 }

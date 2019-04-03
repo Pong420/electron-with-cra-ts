@@ -127,7 +127,7 @@
   },
   "devDependencies": {
     "@types/jest": "24.0.11",
-    "@types/node": "11.12.2",
+    "@types/node": "11.13.0",
     "@types/react": "16.8.10",
     "@types/react-dom": "16.8.3",
     "@types/react-router-dom": "^4.3.1",
@@ -140,13 +140,13 @@
     "lint-staged": "^8.1.5",
     "node-sass": "^4.11.0",
     "rimraf": "^2.6.3",
-    "tslint": "^5.14.0",
+    "tslint": "^5.15.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-react": "^4.0.0"
   },
   "dependencies": {
     "electron-devtools-installer": "^2.2.4",
-    "pong-react-scripts": "2.1.8-1",
+    "pong-react-scripts": "2.1.8-3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.0",
