@@ -2,9 +2,10 @@
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "module": "commonjs",
+    "noEmit": false,
     "outDir": "./",
-    "noEmit": false
+    "rootDir": "./"
   },
   "exclude": ["../node_modules"],
-  "include": ["./"]
+  "include": ["./*"]
 }

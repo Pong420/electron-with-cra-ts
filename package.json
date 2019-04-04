@@ -9,7 +9,7 @@
     "tslint": "tslint 'electron/**/*.ts?(x)' && tslint 'src/**/*.ts?(x)'",
     "app:dev": "cross-env BROWSER=false ELECTRON=true react-scripts start",
     "app:build": "cross-env ELECTRON=true react-scripts build",
-    "electron:compile": "rimraf electron/*js && tsc --project electron/tsconfig.json",
+    "electron:compile": "tsc --project electron/tsconfig.json",
     "electron:dev": "cross-env NODE_ENV=development electron electron/main.js",
     "component": "node scripts/component.js",
     "precommit": "lint-staged",
