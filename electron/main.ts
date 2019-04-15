@@ -1,6 +1,6 @@
 import * as path from 'path';
 import * as url from 'url';
-import { app, BrowserWindow, WebPreferences } from 'electron';
+import { app, shell, BrowserWindow, WebPreferences } from 'electron';
 import { MenuBuilder } from './menu';
 
 let mainWindow: BrowserWindow | null = null;
@@ -48,6 +48,11 @@ async function createWindow() {
 
   mainWindow.webContents.on('did-finish-load', () => {
     mainWindow && mainWindow.show();
+  });
+
+  mainWindow.webContents.on('new-window', (event, url) => {
+    event.preventDefault();
+    shell.openExternal(url);
   });
 
   mainWindow.on('closed', () => {
