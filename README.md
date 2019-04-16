@@ -1,4 +1,4 @@
-## Electron-CRA-TS
+## Electron x CRA x Typescript
 
 The `react-scripts` used in this repo is [my customized version](https://github.com/Pong420/create-react-app). The main difference are `sass-loader` config and allow to change the [webpack target](https://webpack.js.org/concepts/targets/). <br><br>
 If this [CRA pull request are merged](https://github.com/facebook/create-react-app/pull/5498) and you do not require the sass prefix, you could repalce the `react-scripts` to offical version
@@ -24,7 +24,7 @@ yarn dev
 
 ### Packaging
 
-Before packaging you may edit the build config in `package.json` which prefix with `REPLACE_`.
+Before packaging you may edit the build config in `package.json` which prefix with `REPLACE_`. And `React App` in `electron/menu.ts`
 
 To package apps for the local platform:
 
@@ -40,7 +40,7 @@ yarn package-all
 
 ### Tips
 
-- The scss variables / mixins in `src/scss` directly without `@import ....`
+- The scss variables / mixins in `src/scss` can be use directly without `@import ....`
 
 - Create a new component quickly by `yarn component ComponentName`
 
