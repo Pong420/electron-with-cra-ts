@@ -1,22 +1,11 @@
 import * as path from 'path';
 import * as url from 'url';
-import { app, shell, BrowserWindow, WebPreferences } from 'electron';
+import { app, shell, BrowserWindow } from 'electron';
 import { MenuBuilder } from './menu';
 
 let mainWindow: BrowserWindow | null = null;
 
 const isDevelopment = process.env.NODE_ENV === 'development';
-const webPreferences: WebPreferences = isDevelopment
-  ? {
-      // if you have CROS issue, you could uncomment below config
-      // webSecurity: false
-    }
-  : {
-      // Disable Node.js Integration for Remote Content
-      // https://electronjs.org/docs/tutorial/security#2-disable-nodejs-integration-for-remote-content
-      // nodeIntegration: false,
-      // nodeIntegrationInWorker: false
-    };
 
 async function createWindow() {
   if (isDevelopment) {
@@ -32,8 +21,7 @@ async function createWindow() {
   mainWindow = new BrowserWindow({
     show: false,
     height: 600,
-    width: 800,
-    webPreferences
+    width: 800
   });
 
   const startUrl =
