@@ -38,10 +38,39 @@ First, refer to the [Multi Platform Build docs](https://www.electron.build/multi
 yarn package-all
 ```
 
-### Tips
+## Features
 
-- The scss variables / mixins in `src/scss` can be use directly without `@import ....`
+- Scss with some useful mixins. Variables or mixins in `src/scss` can be use directly without `@import`
+- TSLint, ESLint with react-hooks
+- Prettier
+- Pre-comment checking
+- Hot reload configure
+- Helper scripts
 
-- Create a new component quickly by `yarn component ComponentName`
+  - Create a new component
 
-- Install dependencies with type. `yarn get lodash` equivalent to `yarn add lodash` and `yarn add --dev @types/loadash`
+  ```bash
+  // create component with index, scss, component in a folder
+  yarn component ComponentName
+
+  // create single component with out scss
+  yarn component -s ComponentName
+  ```
+
+  - Install dependencies with type
+
+  ```bash
+  // equivalent to `yarn add lodash` and `yarn add --dev @types/loadash`
+  yarn get lodash
+  ```
+
+  - Redux
+
+  ```bash
+  // install `redux`, `react-redux`, `rxjs` and `redux-observable`
+  // And create required script
+  yarn redux init
+
+  // Quickly create action, epic, reducer file
+  yarn redux name
+  ```
