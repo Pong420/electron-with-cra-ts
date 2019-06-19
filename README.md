@@ -40,11 +40,11 @@ yarn package-all
 
 ## Features
 
-- Scss with some useful mixins. Variables or mixins in `src/scss` can be use directly without `@import`
+- Scss support and configured with some useful mixins. Variables and mixins in `src/scss` can be use directly without `@import`
 - TSLint, ESLint with react-hooks
 - Prettier
-- Pre-comment checking
-- Hot reload configure
+- Pre-commit checking
+- Hot reload configured
 - Helper scripts
 
   - Create a new component
@@ -53,7 +53,7 @@ yarn package-all
   // create component with index, scss, component in a folder
   yarn component ComponentName
 
-  // create single component with out scss
+  // create single component with `.tsx` only
   yarn component -s ComponentName
   ```
 
