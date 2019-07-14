@@ -44,7 +44,7 @@ if (args[0] === 'init') {
     const key = dir.split('/').slice(-1)[0];
     fs.readFile(path.join(templatePath, `${key}.tmpl`), (error, content) => {
       if (!error) {
-        fs.mkdirSync(dir);
+        !fs.existsSync(dir) && fs.mkdirSync(dir);
         fs.writeFileSync(path.join(dir, 'index.ts'), content);
       }
     });
