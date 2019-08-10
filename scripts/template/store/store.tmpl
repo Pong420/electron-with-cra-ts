@@ -22,7 +22,7 @@ export default function configureStore() {
   if (process.env.NODE_ENV !== 'production') {
     if (module.hot) {
       module.hot.accept('./reducers', () => {
-        store.replaceReducer(createRootReducer(history));
+        store.replaceReducer(createRootReducer());
       });
 
       module.hot.accept('./epics', () => {
