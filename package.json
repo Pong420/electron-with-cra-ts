@@ -136,17 +136,17 @@
     ]
   },
   "devDependencies": {
-    "@types/node": "12.6.8",
-    "@types/react": "16.8.24",
+    "@types/node": "12.7.1",
+    "@types/react": "16.9.1",
     "@types/react-dom": "16.8.5",
     "@types/react-router-dom": "^4.3.4",
     "cross-env": "^5.2.0",
-    "electron": "^4.2.8",
+    "electron": "^4.2.9",
     "electron-builder": "^21.2.0",
     "electron-devtools-installer": "^2.2.4",
-    "eslint-plugin-react-hooks": "^1.6.1",
+    "eslint-plugin-react-hooks": "^1.7.0",
     "foreman": "^3.0.1",
-    "husky": "^3.0.2",
+    "husky": "^3.0.3",
     "lint-staged": "^9.2.1",
     "node-sass": "npm:sass",
     "prettier": "^1.18.2",
@@ -155,12 +155,12 @@
     "tslint": "^5.18.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-react": "^4.0.0",
-    "typescript": "3.4.5"
+    "typescript": "3.5.3"
   },
   "dependencies": {
-    "pong-react-scripts": "3.0.1-1",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
+    "pong-react-scripts": "3.1.0",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
     "react-router-dom": "^5.0.1"
   },
   "devEngines": {
