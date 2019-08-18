@@ -1,7 +1,8 @@
 ## Electron x CRA x Typescript
 
-The `react-scripts` used in this repo is [my customized version](https://github.com/Pong420/create-react-app). The main difference are `sass-loader` config and allow to change the [webpack target](https://webpack.js.org/concepts/targets/). <br><br>
-If this [CRA pull request are merged](https://github.com/facebook/create-react-app/pull/5498) and you do not require the sass prefix, you could repalce the `react-scripts` to offical version
+The `react-scripts` used in this repo is [my customized version](https://github.com/Pong420/create-react-app). The main difference is `sass-loader` config and allow to change the [webpack target](https://webpack.js.org/concepts/targets/) for electron.
+
+If this [CRA pull request](https://github.com/facebook/create-react-app/pull/5498) merged and you do not require the sass prefix, you could replace the react-scripts to the official version
 
 ### Reference
 
