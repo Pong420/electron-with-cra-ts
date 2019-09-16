@@ -42,7 +42,6 @@ yarn package-all
 ## Features
 
 - Scss support and configured with some useful mixins. Variables and mixins in `src/scss` can be use directly without `@import`
-- TSLint, ESLint with react-hooks
 - Prettier
 - Pre-commit checking
 - Hot reload configured
