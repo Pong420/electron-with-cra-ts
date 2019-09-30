@@ -129,27 +129,27 @@
     ]
   },
   "devDependencies": {
-    "@types/node": "12.7.5",
-    "@types/react": "16.9.2",
-    "@types/react-dom": "16.9.0",
-    "@types/react-router-dom": "^4.3.5",
-    "cross-env": "^5.2.1",
-    "electron": "^4.2.10",
+    "@types/node": "^12.7.8",
+    "@types/react": "^16.9.3",
+    "@types/react-dom": "^16.9.1",
+    "@types/react-router-dom": "^5.1.0",
+    "cross-env": "^6.0.0",
+    "electron": "^4.2.11",
     "electron-builder": "^21.2.0",
     "electron-devtools-installer": "^2.2.4",
     "foreman": "^3.0.1",
-    "husky": "^3.0.5",
-    "lint-staged": "^9.2.5",
-    "pong-react-scripts": "^3.1.1",
+    "husky": "^3.0.7",
+    "lint-staged": "^9.4.0",
+    "pong-react-scripts": "^3.1.2",
     "prettier": "^1.18.2",
     "rimraf": "^3.0.0",
     "sass": "^1.22.12",
-    "typescript": "3.5.3"
+    "typescript": "3.6.3"
   },
   "dependencies": {
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "react-router-dom": "^5.0.1"
+    "react": "^16.10.1",
+    "react-dom": "^16.10.1",
+    "react-router-dom": "^5.1.1"
   },
   "devEngines": {
     "node": ">=7.x",
