@@ -7,9 +7,10 @@ declare interface Window {
   __REDUX_DEVTOOLS_EXTENSION_COMPOSE__: any;
 }
 
-// https://codesandbox.io/s/github/piotrwitek/typesafe-actions-todo-app
-declare interface NodeModule {
-  hot?: { accept: (path?: string, callback?: () => void) => void };
+declare namespace NodeJS {
+  interface Module {
+    hot?: { accept: (path?: string, callback?: () => void) => void };
+  }
 }
 
 declare interface System {
