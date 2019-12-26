@@ -1,19 +1,14 @@
-import { useState, useCallback } from 'react';
+import { useState, useMemo } from 'react';
 
-type Props = [
-  boolean,
-  {
-    on(): void;
-    off(): void;
-    toggle(): void;
-  }
-];
-
-export function useBoolean(initialState: boolean = false): Props {
+export function useBoolean(initialState = false) {
   const [flag, setFlag] = useState(initialState);
-  const on = useCallback(() => setFlag(true), []);
-  const off = useCallback(() => setFlag(false), []);
-  const toggle = useCallback(() => setFlag(flag => !flag), []);
-
-  return [flag, { on, off, toggle }];
+  const actions = useMemo(
+    () => [
+      () => setFlag(true),
+      () => setFlag(false),
+      () => setFlag(flag => !flag)
+    ],
+    []
+  );
+  return [flag, ...actions] as const;
 }

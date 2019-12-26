@@ -21,7 +21,7 @@ const execPromise = command => {
 };
 
 const root = path.join(__dirname, '../src');
-const templatePath = path.join(__dirname, 'template/store');
+const templatePath = path.join(__dirname, 'template');
 const store = path.join(root, 'store');
 const subdir = ['actions', 'epics', 'reducers'].map(dir =>
   path.join(store, dir)
@@ -42,12 +42,21 @@ if (args[0] === 'init') {
 
   [store, ...subdir].forEach(dir => {
     const key = dir.split('/').slice(-1)[0];
-    fs.readFile(path.join(templatePath, `${key}.tmpl`), (error, content) => {
-      if (!error) {
-        !fs.existsSync(dir) && fs.mkdirSync(dir);
-        fs.writeFileSync(path.join(dir, 'index.ts'), content);
+    fs.readFile(
+      path.join(templatePath, 'store', `${key}.tmpl`),
+      (error, content) => {
+        if (!error) {
+          !fs.existsSync(dir) && fs.mkdirSync(dir);
+          fs.writeFileSync(path.join(dir, 'index.ts'), content);
+        }
       }
-    });
+    );
+  });
+
+  fs.readFile(path.join(templatePath, 'useActions.tmpl'), (error, content) => {
+    if (!error) {
+      fs.writeFileSync(path.join(root, 'hooks', 'useActions.ts'), content);
+    }
   });
 } else if (args[0]) {
   const filename = args[0];

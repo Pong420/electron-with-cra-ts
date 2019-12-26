@@ -12,3 +12,5 @@ export type SubType<Base, Condition> = Pick<
   Base,
   AllowedNames<Base, Condition>
 >;
+
+export type ValueOf<T> = T[keyof T];
