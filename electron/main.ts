@@ -21,10 +21,7 @@ async function createWindow() {
   mainWindow = new BrowserWindow({
     show: false,
     height: 600,
-    width: 800,
-    webPreferences: {
-      nodeIntegration: isDevelopment
-    }
+    width: 800
   });
 
   const startUrl =
