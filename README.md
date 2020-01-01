@@ -1,29 +1,29 @@
 ## Electron x CRA x Typescript
 
-The `react-scripts` used in this repo is [my customized version](https://github.com/Pong420/create-react-app). The main difference is `sass-loader` config and allow to change the [webpack target](https://webpack.js.org/concepts/targets/) for electron.
+The `react-scripts` used in this repo is [my customized version](https://github.com/Pong420/create-react-app). The main difference is `sass-loader` config and allow to change the [webpack target](https://webpack.js.org/concepts/targets/) by adding `ELECTRON=true` before `react-scripts xxx` in package.json.
 
-If this [CRA pull request](https://github.com/facebook/create-react-app/pull/5498) merged and you do not require the sass prefix, you could replace the react-scripts to the official version
+If you will not enable `nodeIntegration`, you could use the official `react-scripts`. Or use something similar to [react-app-rewired](https://github.com/timarney/react-app-rewired)
 
 ### Reference
 
 - [How to build an Electron app using create-react-app. No webpack configuration or “ejecting” necessary.](https://medium.freecodecamp.org/building-an-electron-application-with-create-react-app-97945861647c)
 - [electron-react-boilerplate typescript examples](https://github.com/electron-react-boilerplate/examples/tree/master/examples/typescript)
 
-### Installation
-
-yarn is requeired, otherwise you should replace 'yarn' in package.json
+## Installation
 
 ```
+git clone --depth=1 https://github.com/Pong420/electron-with-cra-ts.git
+
 yarn install
 ```
 
-### Development
+## Development
 
 ```
 yarn dev
 ```
 
-### Packaging
+## Packaging
 
 Before packaging you may edit the build config in `package.json` which prefix with `REPLACE_`. And `React App` in `electron/menu.ts`
 
@@ -39,38 +39,90 @@ First, refer to the [Multi Platform Build docs](https://www.electron.build/multi
 yarn package-all
 ```
 
-## Features
+## Tips
 
-- Scss support and configured with some useful mixins. Variables and mixins in `src/scss` can be use directly without `@import`
-- Prettier
-- Pre-commit checking
-- Hot reload configured
-- Helper scripts
+### nodeIntegration
 
-  - Create a new component
+Since electron 5 `nodeIntegration` is default to false as security issue. And it is suggested to add `preload.js`. Here is a example for the approach
 
-  ```bash
-  // create component with index, scss, component in a folder
-  yarn component ComponentName
+1. create `common.d.ts` and include in `./tsconfig.json` and `./electron/tsconfig.json`
 
-  // create single component with `.tsx` only
-  yarn component -s ComponentName
-  ```
+```ts
+declare interface Window {
+  getConfig: any;
+}
+```
 
-  - Install dependencies with type
+2. create `preload.ts` under `electron` folder
 
-  ```bash
-  // equivalent to `yarn add lodash` and `yarn add --dev @types/loadash`
-  yarn get lodash
-  ```
+```ts
+import fs from 'fs';
 
-  - Redux
+window.getConfig = () => {
+  const path = path.join(remote.app.getPath('userData'), 'config.json');
+  return fs.readFileSync(path);
+};
+```
 
-  ```bash
-  // install `redux`, `react-redux`, `rxjs` and `redux-observable`
-  // And create required script
-  yarn redux init
+3. Edit config in `./electron/main.ts`
 
-  // Quickly create action, epic, reducer file
-  yarn redux name
-  ```
+```ts
+import path from 'path';
+
+new BrowserWindow({
+  show: false,
+  height: 600,
+  width: 800,
+  webPreferences: {
+    preload: path.join(__dirname, 'preload.js')
+  }
+});
+```
+
+4. Then adding correct definition in `./src/react-app-env.d.ts`
+
+```ts
+interface Config {
+  darkTheme: boolean;
+}
+
+declare interface Window {
+  getConfig(): Config;
+}
+```
+
+**Note: If you enable `nodeIntegration` then you may adding `ELECTRON=true` before `react-scripts xxx` in package.json**
+
+### Scss
+
+- The variables and mixins in `src/scss` can be use directly without `@import`.
+
+### Helper scripts
+
+- Create a new component
+
+```bash
+// create component with index, scss, component in a folder
+yarn component ComponentName
+
+// create single component with `.tsx` only
+yarn component -s ComponentName
+```
+
+- Install dependencies with type
+
+```bash
+// equivalent to `yarn add lodash` and `yarn add --dev @types/loadash`
+yarn get lodash
+```
+
+- Redux
+
+```bash
+// install `redux`, `react-redux`, `rxjs` and `redux-observable`
+// And create required script
+yarn redux init
+
+// Quickly create action, epic, reducer file
+yarn redux name
+```
