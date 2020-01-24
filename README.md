@@ -45,7 +45,7 @@ yarn package-all
 
 Since electron 5 `nodeIntegration` is default to false as security issue. And it is suggested to add `preload.js`. Here is a example for the approach
 
-1. create `common.d.ts` and include in `./tsconfig.json` and `./electron/tsconfig.json`
+1. create `common.d.ts` at project root and include it in `./tsconfig.json` and `./electron/tsconfig.json`
 
 ```ts
 declare interface Window {
@@ -57,10 +57,15 @@ declare interface Window {
 
 ```ts
 import fs from 'fs';
+import { remote } from 'electron';
 
 window.getConfig = () => {
-  const path = path.join(remote.app.getPath('userData'), 'config.json');
-  return fs.readFileSync(path);
+  const configPath = path.join(remote.app.getPath('userData'), 'config.json');
+  try {
+    return JSON.parse(fs.readFileSync(configPath, 'utf-8'));
+  } catch (error) {
+    console.error(error);
+  }
 };
 ```
 
@@ -91,7 +96,20 @@ declare interface Window {
 }
 ```
 
-**Note: If you enable `nodeIntegration` then you may adding `ELECTRON=true` before `react-scripts xxx` in package.json**
+5. Done
+
+### Enable nodeIntegration
+
+If you enable `nodeIntegration` then you should adding `ELECTRON=true` before `react-scripts xxx` in package.json
+
+```json
+{
+  "scripts": {
+    "app:dev": "cross-env ELECTRON=true BROWSER=false react-scripts start",
+    "app:build": "cross-env ELECTRON=true react-scripts build"
+  }
+}
+```
 
 ### Scss
 
