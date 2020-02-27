@@ -21,7 +21,10 @@ async function createWindow() {
   mainWindow = new BrowserWindow({
     show: false,
     height: 600,
-    width: 800
+    width: 800,
+    webPreferences: {
+      preload: path.join(__dirname, 'preload.js')
+    }
   });
 
   const startUrl =
