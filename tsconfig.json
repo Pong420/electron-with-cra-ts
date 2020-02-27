@@ -16,8 +16,7 @@
     "jsx": "preserve",
     "pretty": true,
     "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "incremental": true
+    "experimentalDecorators": true
   },
   "include": ["src"],
   "exclude": ["node_modules", "**/node_modules/*"]
