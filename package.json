@@ -2,7 +2,7 @@
   "name": "electron-react-ts",
   "version": "1.0.0",
   "scripts": {
-    "dev": "nf start",
+    "dev": "yarn electron:compile & node scripts/electron-wait-react.js",
     "build": "yarn app:build && yarn electron:compile",
     "package": "rimraf release && yarn build && electron-builder build --publish never",
     "package-all": "rimraf release && yarn build && electron-builder build -mwl",
@@ -137,7 +137,6 @@
     "electron": "^8.5.0",
     "electron-builder": "^22.8.0",
     "electron-devtools-installer": "^3.1.1",
-    "foreman": "^3.0.1",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.11",
     "pong-react-scripts": "3.4.0",
