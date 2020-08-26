@@ -119,16 +119,13 @@
       "git add"
     ],
     "{*.json,.{babelrc,eslintrc,prettierrc}}": [
-      "prettier --ignore-path .eslintignore --parser json --write",
-      "git add"
+      "prettier --ignore-path .eslintignore --parser json --write"
     ],
     "*.{css,scss}": [
-      "prettier --ignore-path .eslintignore --single-quote --write",
-      "git add"
+      "prettier --ignore-path .eslintignore --single-quote --write"
     ],
     "*.{yml,md}": [
-      "prettier --ignore-path .eslintignore --single-quote --write",
-      "git add"
+      "prettier --ignore-path .eslintignore --single-quote --write"
     ]
   },
   "devDependencies": {
