@@ -134,7 +134,7 @@
     "@types/react-dom": "^16.9.8",
     "@types/react-router-dom": "^5.1.5",
     "cross-env": "^7.0.2",
-    "electron": "^8.5.1",
+    "electron": "^8.5.2",
     "electron-builder": "^22.8.0",
     "electron-devtools-installer": "^3.1.1",
     "foreman": "^3.0.1",
