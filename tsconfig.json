@@ -13,11 +13,11 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "preserve",
-    "pretty": true,
+    "jsx": "react",
     "emitDecoratorMetadata": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "common.d.ts"],
+  "include": ["src"],
   "exclude": ["node_modules", "**/node_modules/*"]
 }

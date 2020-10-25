@@ -7,6 +7,9 @@ let mainWindow: BrowserWindow | null = null;
 
 const isDevelopment = process.env.NODE_ENV === 'development';
 
+// https://github.com/electron/electron/issues/18397
+app.allowRendererProcessReuse = true;
+
 async function createWindow() {
   if (isDevelopment) {
     const {
